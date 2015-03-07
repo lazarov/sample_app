@@ -16,8 +16,13 @@
     <li><%= link_to "Prices", welcome_prices_path %></li>
     <li><%= link_to "FAQ", welcome_faq_path %></li>
     <li><%= link_to "Features", welcome_features_path %></li>
+    <li><%= link_to "Companies",companies_path %></li>
     <li><%= link_to "Invoices", invoices_path %></li>
-    <li><%= link_to "Login", root_path %></li>
+    <% if !user_signed_in? %>
+    <li><%= link_to "Login", new_user_session_path %></li>
+    <% else %>
+    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    <% end %>
   </ul>
 
   <p class="notice"><%= notice %></p>
